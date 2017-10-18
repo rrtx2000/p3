@@ -1,0 +1,41 @@
+html, body {
+     height:100%;
+     width: 100%;
+     background-color: #dbf3f9;
+}
+
+.mycenter {
+     text-align: center;
+}
+
+#mainBody {
+     margin: 0px 20px 0px 20px;
+}
+
+#program_title {
+     color: blue;
+     text-align: center;
+}
+
+#results {
+     border-color: black;
+     border-style: solid;
+     border-width: 2px;
+     margin: 40px 10px 10px 10px;
+     padding: 10px;
+}
+
+#results h2 {
+     margin-top: 0px;
+     font-style: italic;
+     text-align: center;
+}
+
+pre {
+     border-color: black;
+     border-style: solid;
+     border-width: 2px;
+     margin: 40px 10px 10px 10px;
+     padding: 10px;
+     background-color: #DDD;
+}
