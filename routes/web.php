@@ -13,7 +13,7 @@
 
 
 Route::get('/trip/{var}', 'TripController@show');
-Route::get('/trip', 'TripController@show');
+Route::get('/trip/', 'TripController@show');
 
 //Route::get('/', function () {
 //    return view('welcome');
