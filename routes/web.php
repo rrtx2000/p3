@@ -19,7 +19,7 @@ Route::get('/trip/', 'TripController@show');
 //    return view('welcome');
 //});
 
-Route::get('/', 'TripController@index');
+Route::get('/', 'TripController@show');
 Route::get('/show-results', 'TripController@showResults');
 
 /*

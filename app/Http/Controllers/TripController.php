@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use Debugbar;
+//use Debugbar;
 
 class TripController extends Controller
 {
@@ -21,7 +21,7 @@ class TripController extends Controller
     
     public function show($var = '')
     {
-        Debugbar::addMessage(__FILE__ . ' function show', 'Tracing');
+        //Debugbar::addMessage(__FILE__ . ' function show', 'Tracing');
         if ($var == ''){
             return view('trip.index');
         }

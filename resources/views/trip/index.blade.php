@@ -13,7 +13,7 @@
     @endif
     
     <br/>The Trip computer will go here - this is just copy and pasted html from p2 for now
-                <form action='#'>
+                <form>
                 <label for='numberOfMiles'>Number of miles you will drive (required): </label>
                 <input type='text' name='numberOfMiles' id='numberOfMiles' value=''>
                 
