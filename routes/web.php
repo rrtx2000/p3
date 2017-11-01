@@ -12,15 +12,16 @@
 */
 
 
-Route::get('/trip/{var}', 'TripController@show');
-Route::get('/trip/', 'TripController@show');
+//Route::get('/trip/{var}', 'TripController@show');
+//Route::get('/trip/', 'TripController@show');
+
+Route::get('/', 'TripController@show');
 
 //Route::get('/', function () {
 //    return view('welcome');
 //});
 
-Route::get('/', 'TripController@show');
-Route::get('/show-results', 'TripController@showResults');
+//Route::get('/show-results', 'TripController@showResults');
 
 /*
     Route::get('/trip/{var}', function($var) {

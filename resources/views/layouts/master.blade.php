@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>
-		@yield('title', 'Als Trip')
+		@yield('title', 'P3-Trip Time Computer')
 	</title>
 	
 	<meta charset='utf-8'>
@@ -13,7 +13,7 @@
 <body>
 
 	<header>
-		Trip Header
+		
 	</header>
 
 	<section>
@@ -22,8 +22,6 @@
 
 	<footer>
 	</footer>
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
     @stack('body')
 
