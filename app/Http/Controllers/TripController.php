@@ -56,7 +56,7 @@ class TripController extends Controller
             
             //if ($request->has('numberOfMiles')) {
                 $this->validate($request, [
-                    'numberOfMiles' => 'required|integer'
+                    'numberOfMiles' => 'required|integer|Min:1'
                 ]);
             //}
             
