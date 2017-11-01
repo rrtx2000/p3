@@ -52,15 +52,11 @@ class TripController extends Controller
         }
         else
         {
-            $errors = '';
+            //$errors = '';
             
-            //if ($request->has('numberOfMiles')) {
-                $this->validate($request, [
-                    'numberOfMiles' => 'required|integer|Min:1'
-                ]);
-            //}
-            
-
+            $this->validate($request, [
+                'numberOfMiles' => 'required|integer|Min:1'
+            ]);
             
             //dump($errors);exit;
 
@@ -71,7 +67,7 @@ class TripController extends Controller
             
             $errorMessage = '';
             //@todo - validate here
-            if ($errors) {
+            if (!empty($errors)) {
                 $validationPassed = false;
             }
             else

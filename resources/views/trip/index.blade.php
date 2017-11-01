@@ -8,8 +8,8 @@
 @endpush
 
 @section('content')
-	<h1 class='mycenter'>Alan Martinson - P3 For CSCI E15</h1>
-        <h2 id='program_title'>Trip Time Calculator</h2>
+    <h1 class='mycenter'>Alan Martinson - P3 For CSCI E15</h1>
+    <h2 id='program_title'>Trip Time Calculator</h2>
     
     @if ($errors->any())
 	<div class="alert alert-danger">
