@@ -3,48 +3,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-//use Debugbar;
 
 class TripController extends Controller
 {
-    /*
-    public function index()
-    {
-        return 'Show initial form';
-    }
-    
-    //This will calculate the time 
-    public function showResults()
-    {
-        return 'Show results here';
-    }
-    */
-    
     public function show(Request $request)
     {
-        #$showDumps = true;
-        $showDumps = false;
-        if($showDumps)
-        {
-            //dump($request);           //See all the properties and methods available in the $request object
-            dump($request->all());      //See just the form data from the $request object
-            
-            dump('has numberOfMiles=' . $request->has('numberOfMiles'));
-            dump('numberOfMiles=' . $request->input('numberOfMiles'));        //See just the form data for numberOfMiles
-            
-            dump('has estimatedSpeed=' . $request->has('estimatedSpeed'));
-            dump('estimatedSpeed=' . $request->input('estimatedSpeed'));        //See just the form data for estimatedSpeed
-            
-            dump('has roundOff=' . $request->has('roundOff'));
-            echo("<br>roundOff contents:"); echo("<pre>" . print_r($request->input('roundOff'), 1) . "</pre>");
-            
-            dump('fullUrl=' . $request->fullUrl());
-            dump('method=' . $request->method());
-            dump('isMethod get=' . $request->isMethod('get'));
-            dump('isMethod post=' . $request->isMethod('post'));
-        }
-        
-        //Debugbar::addMessage('File: ' . __FILE__ . ' - Line: ' . __LINE__ . ' - function: ' . __FUNCTION__, 'Tracing');
         if (empty($request->all()))
         {
             //initial request
@@ -52,21 +15,15 @@ class TripController extends Controller
         }
         else
         {
-            //$errors = '';
-            
             $this->validate($request, [
                 'numberOfMiles' => 'required|integer|Min:1'
             ]);
-            
-            //dump($errors);exit;
-
             
             $numberOfMiles = $request->input('numberOfMiles', null);
             $estimatedSpeed = $request->input('estimatedSpeed', '60');      //if a speed isn't supplied, start with an initial value of 60
             $roundOff = ($request->has('roundOff')) ? true : false;
             
             $errorMessage = '';
-            //@todo - validate here
             if (!empty($errors)) {
                 $validationPassed = false;
             }
@@ -74,9 +31,6 @@ class TripController extends Controller
             {
                 $validationPassed = true;
             }
-            
-            //$totalHours = NULL;
-            //$totalMinutes = NULL;
             
             if($validationPassed)
             {

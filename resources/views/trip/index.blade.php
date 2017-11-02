@@ -12,7 +12,7 @@
     <h2 id='program_title'>Trip Time Calculator</h2>
     
     @if ($errors->any())
-	<div class="alert alert-danger">
+	<div class="alert-danger">
 	    <ul>
 		@foreach ($errors->all() as $error)
 		    <li>{{ $error }}</li>
@@ -21,32 +21,21 @@
 	</div>
     @endif
     
-    
-<?php
-
-    if (isset($_GET['numberOfMiles'])){
-	$numberOfMiles = $_GET['numberOfMiles'];
-    }
-    else {
-	$numberOfMiles = '';
-    }
-    
-    if (isset($_GET['estimatedSpeed'])){
-	$estimatedSpeed = $_GET['estimatedSpeed'];
-    }
-    else {
-	$estimatedSpeed = '60';
-    }
-    
-    if (isset($_GET['roundOff'])){
-	$roundOff = true;
-	$roundOffChecked = " checked='checked'";
-    }
-    else {
-	$roundOff = false;
-	$roundOffChecked = "";
-    }
-?>
+	<?php
+		$numberOfMiles = (isset($_GET['numberOfMiles'])) ? $_GET['numberOfMiles'] : '';
+		$estimatedSpeed = (isset($_GET['estimatedSpeed'])) ? $_GET['estimatedSpeed'] : '60';
+		
+		if (isset($_GET['roundOff']))
+		{
+			$roundOff = true;
+			$roundOffChecked = " checked='checked'";
+		}
+		else
+		{
+			$roundOff = false;
+			$roundOffChecked = "";
+		}
+	?>
 
     <div>
 	This application calculates the estimated time a trip will take you.
@@ -57,55 +46,44 @@
     </div>
 
 	<form action='#'>
-	    <label for='numberOfMiles'>Number of miles you will drive (required): </label>
-	    <input type='text' name='numberOfMiles' id='numberOfMiles' value='{{ $numberOfMiles or '' }}'>
-	    
-	    <br/>
-	    <label for='estimatedSpeed'>Estimated Speed (required): </label>
-	    <select name='estimatedSpeed' id='estimatedSpeed'>
+		<label for='numberOfMiles'>Number of miles you will drive (required): </label>
+		<input type='text' name='numberOfMiles' id='numberOfMiles' value='{{ $numberOfMiles or '' }}'>
+		<br/>
+		<label for='estimatedSpeed'>Estimated Speed (required): </label>
+		<select name='estimatedSpeed' id='estimatedSpeed'>
 		
 		<?php
-			
-		    $MINIMUM_SPEED = 5;
-		    $MAXIMUM_SPEED = 120;
-		    for ($i=$MINIMUM_SPEED; $i<=$MAXIMUM_SPEED; $i= $i+5){
-			if($i == $estimatedSpeed){
-			    $estimatedSpeedSelected = " selected";
+			$MINIMUM_SPEED = 5;
+			$MAXIMUM_SPEED = 120;
+			for ($i=$MINIMUM_SPEED; $i<=$MAXIMUM_SPEED; $i= $i+5){
+			if($i == $estimatedSpeed)
+			{
+				$estimatedSpeedSelected = " selected";
 			}
-			else {
-			    $estimatedSpeedSelected = "";
+			else
+			{
+				$estimatedSpeedSelected = "";
 			}
 			
 			echo("\t\t\t\t\t<option" . $estimatedSpeedSelected . ">" . $i . "</option>\n");
-		    }
+			}
 		?>
-	    </select>
-	    
-	    <br/>Round up to the nearest 15 minutes: <input type='checkbox' name='roundOff[]' {{ ($roundOff) ? ' CHECKED' : '' }}>
-	    <br/>
-	    <button type='submit'>Submit</button>
+		</select>
+		
+		<br/>Round up to the nearest 15 minutes: <input type='checkbox' name='roundOff[]' {{ ($roundOff) ? ' CHECKED' : '' }}>
+		<br/>
+		<button type='submit'>Submit</button>
 	</form>
 	
 	@if (isset($totalMinutes))
-		
-                <div id='results'>
-                    <h2>Results</h2>
-                    
-			
-                    Based on your expected average speed of {{ $estimatedSpeed }} mph, it will take you
-                    {{ $totalHours }} hour{{ $hour_s }}
-                    and {{(int)$totalMinutes}} minute{{ $minute_s }}
-                    to travel {{ $numberOfMiles }} mile{{ $mile_s }}.
-		
-                    
-                    
-                   
-                </div>
-	
-	
+		<div id='results'>
+			<h2>Results</h2>
+			Based on your expected average speed of {{ $estimatedSpeed }} mph, it will take you
+			{{ $totalHours }} hour{{ $hour_s }}
+			and {{(int)$totalMinutes}} minute{{ $minute_s }}
+			to travel {{ $numberOfMiles }} mile{{ $mile_s }}.
+		</div>
 	@endif
-	
-	
 	
 @endsection
 
